@@ -49,7 +49,7 @@ fun TodoView(vm: TodoViewModel) {
             if (vm.errorMessage.isEmpty()){
                 Column(modifier = Modifier.padding(16.dp)) {
                     LazyColumn(modifier = Modifier.fillMaxHeight()){
-                        items(vm.todoList){todo ->
+                        items(vm.postList){todo ->
                             Column{
                                 Row(
                                     modifier = Modifier

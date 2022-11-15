@@ -15,7 +15,7 @@ const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 interface ApiService{
     @GET("posts")
-    suspend fun getTodos(): List<Post>
+    suspend fun getPost(): List<Post>
 
     companion object{
         var apiService: ApiService? = null
