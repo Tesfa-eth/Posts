@@ -10,7 +10,12 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.viewmodelsandapitutorial.api.Post
@@ -51,7 +56,7 @@ fun TodoView(vm: PostViewModel) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     LazyColumn(modifier = Modifier.fillMaxHeight()){
                         items(vm.postList){post ->
-                            CardView(post)
+                            CardViewRow(post)
                         }
                     }
                 }
@@ -64,7 +69,7 @@ fun TodoView(vm: PostViewModel) {
 }
 
 @Composable
-fun CardView(post: Post){
+fun CardViewRow(post: Post){
     Column{
         Row(
             modifier = Modifier
@@ -72,13 +77,14 @@ fun CardView(post: Post){
                 .padding(16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ){
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(0.dp, 0.dp, 16.dp, 0.dp)
-            ){
-                Text(text = post.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            }
+//            Box(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(0.dp, 0.dp, 16.dp, 0.dp)
+//            ){
+//                Text(text = post.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
+//            }
+            PostCard(post = post)
 
             Spacer(modifier = Modifier.width(16.dp))
 
@@ -86,6 +92,41 @@ fun CardView(post: Post){
         }
 
         Divider()
+
+        
+    }
+}
+
+@Composable
+fun PostCard(post: Post) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(15.dp),
+        elevation = 10.dp
+    ) {
+        Column(
+            modifier = Modifier.padding(15.dp)
+        ) {
+            Text(
+                buildAnnotatedString {
+                    append(post.title)
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.W900, color = Color(0xFF4552B8))
+                    ) {
+                        append("Jetpack Compose Playground")
+                    }
+                }
+            )
+            Text(
+                buildAnnotatedString {
+                    append("Now you are in the ")
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.W900)) {
+                        append("Card")
+                    }
+                    append(" section")
+                }
+            )
+        }
     }
 }
 
