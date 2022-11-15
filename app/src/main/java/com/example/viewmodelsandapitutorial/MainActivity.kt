@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.viewmodelsandapitutorial.api.Post
 import com.example.viewmodelsandapitutorial.ui.theme.ViewModelsAndApiTutorialTheme
 import com.example.viewmodelsandapitutorial.viewmodel.PostViewModel
 
@@ -49,29 +50,8 @@ fun TodoView(vm: PostViewModel) {
             if (vm.errorMessage.isEmpty()){
                 Column(modifier = Modifier.padding(16.dp)) {
                     LazyColumn(modifier = Modifier.fillMaxHeight()){
-                        items(vm.postList){todo ->
-                            Column{
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(16.dp),
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ){
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(0.dp, 0.dp, 16.dp, 0.dp)
-                                    ){
-                                        Text(text = todo.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                    }
-                                    
-                                    Spacer(modifier = Modifier.width(16.dp))
-                                    
-                                    //Checkbox(checked = todo.completed, onCheckedChange = null)
-                                }
-                                
-                                Divider()
-                            }
+                        items(vm.postList){post ->
+                            CardView(post)
                         }
                     }
                 }
@@ -81,6 +61,32 @@ fun TodoView(vm: PostViewModel) {
             }
         }
     )
+}
+
+@Composable
+fun CardView(post: Post){
+    Column{
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(0.dp, 0.dp, 16.dp, 0.dp)
+            ){
+                Text(text = post.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            //Checkbox(checked = todo.completed, onCheckedChange = null)
+        }
+
+        Divider()
+    }
 }
 
 @Preview(showBackground = true)
