@@ -14,12 +14,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.viewmodelsandapitutorial.ui.theme.ViewModelsAndApiTutorialTheme
-import com.example.viewmodelsandapitutorial.viewmodel.TodoViewModel
+import com.example.viewmodelsandapitutorial.viewmodel.PostViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //get the view model before on create
-        val vm = TodoViewModel()
+        val vm = PostViewModel()
         super.onCreate(savedInstanceState)
         setContent {
             ViewModelsAndApiTutorialTheme {
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TodoView(vm: TodoViewModel) {
+fun TodoView(vm: PostViewModel) {
     // To call suspend function safely inside composeable, use LaunchedEffectComposable
     LaunchedEffect(key1 = Unit, block = {
         vm.getTodoList()
@@ -87,7 +87,7 @@ fun TodoView(vm: TodoViewModel) {
 @Composable
 fun DefaultPreview() {
     ViewModelsAndApiTutorialTheme {
-        val vm = TodoViewModel()
+        val vm = PostViewModel()
         TodoView(vm = vm)
     }
 }

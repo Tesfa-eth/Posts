@@ -11,7 +11,7 @@ import com.example.viewmodelsandapitutorial.api.Post
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class TodoViewModel : ViewModel() {
+class PostViewModel : ViewModel() {
     private val _postList = mutableStateListOf<Post>()
     var errorMessage: String by mutableStateOf("")
     val postList: List<Post>
