@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 fun PostView(vm: PostViewModel) {
     // To call suspend function safely inside composeable, use LaunchedEffectComposable
     LaunchedEffect(key1 = Unit, block = {
-        vm.getTodoList()
+        vm.getPostList()
     })
     
     Scaffold(
@@ -76,18 +76,10 @@ fun CardViewRow(post: Post){
                 .padding(16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ){
-//            Box(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(0.dp, 0.dp, 16.dp, 0.dp)
-//            ){
-//                Text(text = post.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
-//            }
+
             PostCard(post = post)
 
             Spacer(modifier = Modifier.width(10.dp))
-
-            //Checkbox(checked = todo.completed, onCheckedChange = null)
         }
 
         
@@ -116,11 +108,9 @@ fun PostCard(post: Post) {
             )
             Text(
                 buildAnnotatedString {
-                    //append("Now you are in the ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.W900)) {
                         append(post.title)
                     }
-                    //append(" section")
                 }
             )
             Text(text = post.body)

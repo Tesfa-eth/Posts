@@ -17,7 +17,7 @@ class PostViewModel : ViewModel() {
     val postList: List<Post>
         get() = _postList
 
-    fun getTodoList() {
+    fun getPostList() {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
             try {
