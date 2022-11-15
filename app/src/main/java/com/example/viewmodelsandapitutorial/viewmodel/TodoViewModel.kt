@@ -7,14 +7,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.viewmodelsandapitutorial.api.ApiService
-import com.example.viewmodelsandapitutorial.api.Todo
+import com.example.viewmodelsandapitutorial.api.Post
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class TodoViewModel : ViewModel() {
-    private val _todoList = mutableStateListOf<Todo>()
+    private val _todoList = mutableStateListOf<Post>()
     var errorMessage: String by mutableStateOf("")
-    val todoList: List<Todo>
+    val todoList: List<Post>
         get() = _todoList
 
     fun getTodoList() {
