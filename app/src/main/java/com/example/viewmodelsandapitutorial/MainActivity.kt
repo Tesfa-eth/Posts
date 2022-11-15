@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,14 +28,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ViewModelsAndApiTutorialTheme {
-                TodoView(vm)
+                PostView(vm)
             }
         }
     }
 }
 
 @Composable
-fun TodoView(vm: PostViewModel) {
+fun PostView(vm: PostViewModel) {
     // To call suspend function safely inside composeable, use LaunchedEffectComposable
     LaunchedEffect(key1 = Unit, block = {
         vm.getTodoList()
@@ -47,7 +46,7 @@ fun TodoView(vm: PostViewModel) {
             TopAppBar(
                 title = {
                     Row {
-                        Text(text = "Todos")
+                        Text(text = "Posts")
                     }
                 })
         },
@@ -86,12 +85,10 @@ fun CardViewRow(post: Post){
 //            }
             PostCard(post = post)
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(10.dp))
 
             //Checkbox(checked = todo.completed, onCheckedChange = null)
         }
-
-        Divider()
 
         
     }
@@ -102,7 +99,7 @@ fun PostCard(post: Post) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(15.dp),
+            .padding(2.dp),
         elevation = 10.dp
     ) {
         Column(
@@ -110,22 +107,23 @@ fun PostCard(post: Post) {
         ) {
             Text(
                 buildAnnotatedString {
-                    append(post.title)
+                    //append("User ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.W900, color = Color(0xFF4552B8))
                     ) {
-                        append("Jetpack Compose Playground")
+                        append("User ${post.id.toString()}")
                     }
                 }
             )
             Text(
                 buildAnnotatedString {
-                    append("Now you are in the ")
+                    //append("Now you are in the ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.W900)) {
-                        append("Card")
+                        append(post.title)
                     }
-                    append(" section")
+                    //append(" section")
                 }
             )
+            Text(text = post.body)
         }
     }
 }
@@ -134,7 +132,5 @@ fun PostCard(post: Post) {
 @Composable
 fun DefaultPreview() {
     ViewModelsAndApiTutorialTheme {
-        val vm = PostViewModel()
-        TodoView(vm = vm)
     }
 }
