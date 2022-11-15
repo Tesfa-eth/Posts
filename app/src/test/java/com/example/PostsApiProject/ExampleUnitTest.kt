@@ -1,4 +1,4 @@
-package com.example.viewmodelsandapitutorial
+package com.example.PostsApiProject
 
 import org.junit.Test
 

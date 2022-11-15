@@ -1,4 +1,4 @@
-package com.example.viewmodelsandapitutorial.ui.theme
+package com.example.PostsApiProject.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

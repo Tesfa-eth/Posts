@@ -1,4 +1,4 @@
-package com.example.viewmodelsandapitutorial.viewmodel
+package com.example.PostsApiProject.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -6,8 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.viewmodelsandapitutorial.api.ApiService
-import com.example.viewmodelsandapitutorial.api.Post
+import com.example.PostsApiProject.api.ApiService
+import com.example.PostsApiProject.api.Post
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

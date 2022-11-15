@@ -1,4 +1,4 @@
-package com.example.viewmodelsandapitutorial
+package com.example.PostsApiProject
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,9 +17,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.viewmodelsandapitutorial.api.Post
-import com.example.viewmodelsandapitutorial.ui.theme.ViewModelsAndApiTutorialTheme
-import com.example.viewmodelsandapitutorial.viewmodel.PostViewModel
+import com.example.PostsApiProject.api.Post
+import com.example.PostsApiProject.ui.theme.ViewModelsAndApiTutorialTheme
+import com.example.PostsApiProject.viewmodel.PostViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
